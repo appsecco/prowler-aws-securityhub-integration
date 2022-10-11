@@ -2,8 +2,8 @@ import csv
 import json
 
 # Set variables for within container
-CSV_PATH = 'prowler_report.csv'
-JSON_PATH = 'prowler_report.json'
+CSV_PATH = 'output/prowler_report.csv'
+JSON_PATH = 'output/prowler_report.json'
 
 # Reads prowler CSV output
 csv_file = csv.DictReader(open(CSV_PATH, 'r'))
@@ -17,7 +17,7 @@ for row in csv_file:
 open(JSON_PATH, 'w').write(json.dumps(json_list))
 
 # open newly converted prowler output
-with open('prowler_report.json') as f:
+with open('output/prowler_report.json') as f:
     data = json.load(f)
 
 # remove data not needed for Security Hub BatchImportFindings    
@@ -29,5 +29,5 @@ for element in data:
     del element['REGION']
 
 # writes out to a new file, prettified
-with open('format_prowler_report.json', 'w') as f:
+with open('output/format_prowler_report.json', 'w') as f:
     json.dump(data, f, indent=2)

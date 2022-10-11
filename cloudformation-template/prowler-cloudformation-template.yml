@@ -136,7 +136,7 @@ Resources:
               accountId = os.environ['account_num']
               awsRegion = os.environ['region']
               # Use Prowler finding notes for ASFF Description
-              prowlerDescription = str(event['Records'][0]['dynamodb']['NewImage']['CHECK_RISK']['S'])
+              prowlerRiskDescription = str(event['Records'][0]['dynamodb']['NewImage']['CHECK_RISK']['S'])
               # Use Prowler finding title text for ASFF Title
               prowlerTitle = str(event['Records'][0]['dynamodb']['NewImage']['TITLE_TEXT']['S'])
               # looping through Prowler score result, set severity & compliance based on finding
@@ -184,7 +184,7 @@ Resources:
                                   'Normalized': prowlerProductNorm
                               },
                               'Title': prowlerTitle,
-                              'Description': prowlerDescription,
+                              'Description': prowlerRiskDescription,
                               'Resources': [
                                   {
                                       'Type': 'AwsAccount',
