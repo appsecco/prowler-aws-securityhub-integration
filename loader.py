@@ -16,16 +16,19 @@ with open('output/format_prowler_report.json') as json_file:
     for finding in findings:
         TITLE_ID = finding['TITLE_ID']
         TITLE_TEXT = finding['TITLE_TEXT']
-        RESULT = finding['CHECK_RESULT']
+        CHECK_RESULT = finding['CHECK_RESULT']
         CHECK_RISK = finding['CHECK_RISK']
         CHECK_SEVERITY = finding['CHECK_SEVERITY']
+        CHECK_REMEDIATION = finding['CHECK_REMEDIATION']
 
-        print("Adding finding:", TITLE_ID, TITLE_TEXT, CHECK_RISK,CHECK_SEVERITY)
+        print("Adding finding:", TITLE_ID, TITLE_TEXT, CHECK_RESULT,CHECK_REMEDIATION,CHECK_RISK,CHECK_SEVERITY)
 
         table.put_item(
            Item={
                'TITLE_ID': TITLE_ID,
                'TITLE_TEXT': TITLE_TEXT,
+               'CHECK_RESULT': CHECK_RESULT,
+               'CHECK_REMEDIATION':CHECK_REMEDIATION,
                'CHECK_RISK': CHECK_RISK,
                'CHECK_SEVERITY': CHECK_SEVERITY,
             }
