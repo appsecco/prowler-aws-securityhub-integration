@@ -23,8 +23,8 @@ with open('prowler_report.json') as f:
 # remove data not needed for Security Hub BatchImportFindings    
 for element in data: 
     del element['PROFILE']
-    del element['SCORED']
-    del element['LEVEL']
+    del element['ITEM_SCORED']
+    del element['ITEM_LEVEL']
     del element['ACCOUNT_NUM']
     del element['REGION']
 
